@@ -5,30 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$NOREF - No Refunds</title>
   <style>
-    /* Body & Layout */
+    /* Global Styles */
     body {
       background: black;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      overflow: hidden; /* Prevent scrollbars if content fits */
-      position: relative;
       margin: 0;
       padding: 0;
-      min-height: 100vh; /* Ensure the body can expand if content grows */
+      overflow-x: hidden; /* Disable horizontal scrolling */
+      /* Allow vertical scrolling if needed */
     }
-
+    
     /* Meme Image on Top */
     .meme-image {
       display: block;
-      margin: 0 auto;
-      margin-top: 20px;
+      margin: 20px auto;
       width: 300px; /* Adjust as needed */
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
-
-    /* Wobbly effect for No Refunds text */
+    
+    /* Wobbly Heading */
     @keyframes wobble {
       0%   { transform: rotate(0deg); }
       25%  { transform: rotate(-2deg); }
@@ -43,8 +41,8 @@
       text-shadow: 3px 3px 0 #000;
       margin-top: 20px;
     }
-
-    /* Floating dollar signs */
+    
+    /* Floating Dollar Signs */
     .dollar {
       position: absolute;
       font-size: 2rem;
@@ -57,8 +55,8 @@
       50%  { opacity: 1; }
       100% { transform: translateY(-10vh); opacity: 0; }
     }
-
-    /* Narrative section */
+    
+    /* Narrative Section */
     .narrative {
       max-width: 600px;
       margin: 20px auto;
@@ -66,8 +64,8 @@
       line-height: 1.5;
       padding: 0 10px;
     }
-
-    /* Rubbing Hands Button */
+    
+    /* Button */
     #rubHands {
       background: gold;
       border: none;
@@ -82,24 +80,55 @@
     #rubHands:hover {
       transform: scale(1.1);
     }
-
-    /* Hands container (hidden by default) */
-    .hands {
-      display: none;
-      font-size: 5rem;
-      margin-top: 20px;
-      animation: rub 0.6s infinite alternate ease-in-out;
+    
+    /* Hands Container */
+    .hands-container {
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+      max-width: 300px;
     }
-
-    /* Improved "rubbing" animation */
-    @keyframes rub {
-      0%   { transform: rotate(0deg) scale(1); }
-      25%  { transform: rotate(3deg) scale(1.02); }
-      50%  { transform: rotate(-3deg) scale(1.05); }
-      75%  { transform: rotate(3deg) scale(1.02); }
-      100% { transform: rotate(0deg) scale(1); }
+    
+    .hand {
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      /* Ensure the hands are side by side */
+      display: inline-block;
     }
-
+    
+    /* Left-hand image from web */
+    .left-hand {
+      background-image: url('https://img.icons8.com/ios-filled/100/ffffff/hand.png');
+      transform-origin: right center;
+      animation: rubLeft 0.5s infinite alternate ease-in-out;
+    }
+    
+    /* Right-hand: use same image and mirror it */
+    .right-hand {
+      background-image: url('https://img.icons8.com/ios-filled/100/ffffff/hand.png');
+      transform-origin: left center;
+      /* Mirror image */
+      transform: scaleX(-1);
+      animation: rubRight 0.5s infinite alternate ease-in-out;
+    }
+    
+    /* Left-hand animation: move right toward center */
+    @keyframes rubLeft {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(10px) rotate(5deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    
+    /* Right-hand animation: move left toward center (include mirror) */
+    @keyframes rubRight {
+      0% { transform: translateX(0) rotate(0deg) scaleX(-1); }
+      50% { transform: translateX(-10px) rotate(-5deg) scaleX(-1); }
+      100% { transform: translateX(0) rotate(0deg) scaleX(-1); }
+    }
+    
     /* Twitter Link */
     .twitter-link {
       display: inline-block;
@@ -120,12 +149,8 @@
 </head>
 <body>
 
-  <!-- Meme Image (Local File) -->
-  <img
-    src="IMG_1932.png"
-    alt="Sam Bankman-Fried Meme"
-    class="meme-image"
-  />
+  <!-- Meme Image -->
+  <img src="IMG_1932.png" alt="Sam Bankman-Fried Meme" class="meme-image" />
 
   <!-- Main Heading -->
   <h1>$NOREF - No Refunds</h1>
@@ -148,16 +173,19 @@
   <!-- Rubbing Hands Button -->
   <button id="rubHands">Rub Hands Like Bankman</button>
 
-  <!-- Hands Emoji (Hidden Until Button Click) -->
-  <div class="hands" id="hands">🤲💰🤲</div>
+  <!-- Hands Animation Container -->
+  <div class="hands-container" id="handsContainer">
+    <div class="hand left-hand"></div>
+    <div class="hand right-hand"></div>
+  </div>
 
   <!-- Twitter Link -->
   <a class="twitter-link" href="https://twitter.com/yourtwitterhandle" target="_blank">
     Follow us on Twitter
   </a>
 
+  <!-- Floating Dollar Signs -->
   <script>
-    // Generate floating dollar signs
     function createDollarSigns() {
       for (let i = 0; i < 50; i++) {
         const dollar = document.createElement("div");
@@ -169,11 +197,11 @@
       }
     }
     createDollarSigns();
-
-    // Show Rubbing Hands on Button Click
+    
+    // Show hands on button click
     document.getElementById("rubHands").addEventListener("click", function () {
-      const hands = document.getElementById("hands");
-      hands.style.display = "block";
+      const handsContainer = document.getElementById("handsContainer");
+      handsContainer.style.display = "flex";
     });
   </script>
 </body>
