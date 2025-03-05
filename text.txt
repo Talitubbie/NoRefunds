@@ -1,0 +1,147 @@
+index2.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$NOREF - No Refunds</title>
+    <style>
+        /* Background: Full of floating dollar signs */
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Wobbly effect for No Refunds text */
+        @keyframes wobble {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: wobble 1s infinite;
+            color: #ffcc00;
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        /* Floating dollar signs */
+        .dollar {
+            position: absolute;
+            font-size: 2rem;
+            color: green;
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Narrative section */
+        .narrative {
+            max-width: 600px;
+            margin: 20px auto;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Rubbing Hands Button */
+        #rubHands {
+            background: gold;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        #rubHands:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hands container */
+        .hands {
+            display: none;
+            font-size: 5rem;
+            margin-top: 20px;
+            animation: rub 0.5s infinite alternate;
+        }
+
+        @keyframes rub {
+            from { transform: translateX(5px); }
+            to { transform: translateX(-5px); }
+        }
+
+        /* Twitter Link */
+        .twitter-link {
+            display: block;
+            margin-top: 30px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: cyan;
+        }
+        
+        .twitter-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>$NOREF - No Refunds</h1>
+
+    <p class="narrative">
+        In the grand tradition of financial "geniuses" who promise the moon and deliver a black hole, we present **$NOREF**—the only token that embraces the hard truth: 
+        <br><br>
+        **No Refunds. No Mercy. No Second Chances.**  
+        <br><br>
+        Inspired by **Sam Bankman-Fraud**, the ultimate crypto rug-pull, $NOREF ensures you remember that in crypto, there are **No Refunds**.  
+        <br><br>
+        **No VCs. No backdoors. Just pure meme power.**  
+    </p>
+
+    <!-- Rubbing Hands Button -->
+    <button id="rubHands">Rub Hands Like Bankman</button>
+
+    <!-- Hands Emoji (Hidden Until Button Click) -->
+    <div class="hands" id="hands">🤲💰🤲</div>
+
+    <!-- Twitter Link -->
+    <a class="twitter-link" href="https://twitter.com/yourtwitterhandle" target="_blank">Follow us on Twitter</a>
+
+    <script>
+        // Generate floating dollar signs
+        function createDollarSigns() {
+            for (let i = 0; i < 50; i++) {
+                let dollar = document.createElement("div");
+                dollar.innerHTML = "$";
+                dollar.className = "dollar";
+                dollar.style.left = Math.random() * 100 + "vw";
+                dollar.style.animationDuration = Math.random() * 3 + 3 + "s";
+                document.body.appendChild(dollar);
+            }
+        }
+        createDollarSigns();
+
+        // Rubbing Hands Animation
+        document.getElementById("rubHands").addEventListener("click", function () {
+            let hands = document.getElementById("hands");
+            hands.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
