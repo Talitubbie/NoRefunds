@@ -1,136 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$NOREF - No Refunds</title>
-    <style>
-        /* Full-page styling */
-        body {
-            background: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            overflow: hidden; /* Fix scrolling issue */
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$NOREF - No Refunds</title>
+  <style>
+    /* Body & Layout */
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden; /* Prevent scrollbars if content fits */
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Ensure the body can expand if content grows */
+    }
 
-        /* Background floating dollar signs */
-        .dollar {
-            position: absolute;
-            font-size: 2rem;
-            color: green;
-            opacity: 0.7;
-            animation: float 6s infinite linear;
-        }
+    /* Meme Image on Top */
+    .meme-image {
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+      width: 300px; /* Adjust as needed */
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
 
-        @keyframes float {
-            0% { transform: translateY(100vh); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-10vh); opacity: 0; }
-        }
+    /* Wobbly effect for No Refunds text */
+    @keyframes wobble {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(-2deg); }
+      50%  { transform: rotate(2deg); }
+      75%  { transform: rotate(-2deg); }
+      100% { transform: rotate(0deg); }
+    }
+    h1 {
+      font-size: 3rem;
+      animation: wobble 1s infinite;
+      color: #ffcc00;
+      text-shadow: 3px 3px 0 #000;
+      margin-top: 20px;
+    }
 
-        /* Meme Image */
-        .meme {
-            width: 80%;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
+    /* Floating dollar signs */
+    .dollar {
+      position: absolute;
+      font-size: 2rem;
+      color: green;
+      opacity: 0.7;
+      animation: float 5s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%   { transform: translateY(100vh); opacity: 0; }
+      50%  { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
 
-        /* Narrative section */
-        .narrative {
-            max-width: 600px;
-            font-size: 1.2rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
+    /* Narrative section */
+    .narrative {
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      padding: 0 10px;
+    }
 
-        /* Button */
-        #rubHands {
-            background: gold;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 10px;
-            margin-top: 10px;
-            transition: transform 0.2s;
-        }
+    /* Rubbing Hands Button */
+    #rubHands {
+      background: gold;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-top: 20px;
+      transition: transform 0.2s;
+    }
+    #rubHands:hover {
+      transform: scale(1.1);
+    }
 
-        #rubHands:hover {
-            transform: scale(1.1);
-        }
+    /* Hands container (hidden by default) */
+    .hands {
+      display: none;
+      font-size: 5rem;
+      margin-top: 20px;
+      animation: rub 0.6s infinite alternate ease-in-out;
+    }
 
-        /* Hands Container */
-        .hands-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            visibility: hidden;
-            margin-top: 20px;
-        }
+    /* Improved "rubbing" animation */
+    @keyframes rub {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(3deg) scale(1.02); }
+      50%  { transform: rotate(-3deg) scale(1.05); }
+      75%  { transform: rotate(3deg) scale(1.02); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
 
-        /* Rubbing Hands Animation (Same as the meme) */
-        .hand {
-            font-size: 4rem;
-            display: inline-block;
-            animation: rub 0.4s infinite alternate ease-in-out;
-        }
-
-        @keyframes rub {
-            from { transform: translateX(5px) rotate(5deg); }
-            to { transform: translateX(-5px) rotate(-5deg); }
-        }
-
-        /* Twitter Link */
-        .twitter-link {
-            display: block;
-            margin-top: 20px;
-            font-size: 1.5rem;
-            text-decoration: none;
-            color: cyan;
-        }
-
-        .twitter-link:hover {
-            color: white;
-        }
-    </style>
+    /* Twitter Link */
+    .twitter-link {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: cyan;
+      padding: 10px 20px;
+      border: 2px solid cyan;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .twitter-link:hover {
+      color: black;
+      background: cyan;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Meme Image -->
-    <img src="main-meme.jpg" alt="No Refunds Meme" class="meme">
+  <!-- Meme Image (Local File) -->
+  <img
+    src="IMG_1932.png"
+    alt="Sam Bankman-Fried Meme"
+    class="meme-image"
+  />
 
-    <!-- Narrative Section -->
-    <div class="narrative">
-        <p>Welcome to $NOREF – the token inspired by financial genius and creative accounting. No refunds, no take-backs, and absolutely no liability.</p>
-    </div>
+  <!-- Main Heading -->
+  <h1>$NOREF - No Refunds</h1>
 
-    <!-- Rubbing Hands Button -->
-    <button id="rubHands">RUB HANDS</button>
+  <!-- Narrative Text -->
+  <p class="narrative">
+    In the grand tradition of financial "geniuses" who promise the moon 
+    and deliver a black hole, we present <strong>$NOREF</strong>—the only token 
+    that embraces the hard truth:
+    <br><br>
+    <strong>No Refunds. No Mercy. No Second Chances.</strong>
+    <br><br>
+    Inspired by <strong>Sam Bankman-Fraud</strong>, the ultimate crypto rug-pull, 
+    $NOREF ensures you remember that in crypto, there are 
+    <strong>No Refunds</strong>.
+    <br><br>
+    <em>No VCs. No backdoors. Just pure meme power.</em>
+  </p>
 
-    <!-- Hands Animation -->
-    <div class="hands-container">
-        <span class="hand">🤲</span>
-        <span class="hand">🤲</span>
-    </div>
+  <!-- Rubbing Hands Button -->
+  <button id="rubHands">Rub Hands Like Bankman</button>
 
-    <!-- Twitter Link -->
-    <a href="https://twitter.com/yourhandle" class="twitter-link" target="_blank">Follow us on Twitter</a>
+  <!-- Hands Emoji (Hidden Until Button Click) -->
+  <div class="hands" id="hands">🤲💰🤲</div>
 
-    <script>
-        document.getElementById("rubHands").addEventListener("click", function() {
-            let handsContainer = document.querySelector(".hands-container");
-            handsContainer.style.visibility = "visible";
-        });
-    </script>
+  <!-- Twitter Link -->
+  <a class="twitter-link" href="https://twitter.com/yourtwitterhandle" target="_blank">
+    Follow us on Twitter
+  </a>
 
+  <script>
+    // Generate floating dollar signs
+    function createDollarSigns() {
+      for (let i = 0; i < 50; i++) {
+        const dollar = document.createElement("div");
+        dollar.innerHTML = "$";
+        dollar.className = "dollar";
+        dollar.style.left = Math.random() * 100 + "vw";
+        dollar.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(dollar);
+      }
+    }
+    createDollarSigns();
+
+    // Show Rubbing Hands on Button Click
+    document.getElementById("rubHands").addEventListener("click", function () {
+      const hands = document.getElementById("hands");
+      hands.style.display = "block";
+    });
+  </script>
 </body>
 </html>
