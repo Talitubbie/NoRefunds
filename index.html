@@ -14,7 +14,6 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden; /* Disable horizontal scrolling */
-      /* Allow vertical scrolling if needed */
     }
     
     /* Meme Image on Top */
@@ -65,71 +64,7 @@
       padding: 0 10px;
     }
     
-    /* Button */
-    #rubHands {
-      background: gold;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 10px;
-      margin-top: 20px;
-      transition: transform 0.2s;
-    }
-    #rubHands:hover {
-      transform: scale(1.1);
-    }
-    
-    /* Hands Container */
-    .hands-container {
-      display: none; /* Hidden by default */
-      justify-content: center;
-      align-items: center;
-      margin: 20px auto;
-      max-width: 300px;
-    }
-    
-    .hand {
-      width: 100px;
-      height: 100px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      /* Ensure the hands are side by side */
-      display: inline-block;
-    }
-    
-    /* Left-hand image from web */
-    .left-hand {
-      background-image: url('https://img.icons8.com/ios-filled/100/ffffff/hand.png');
-      transform-origin: right center;
-      animation: rubLeft 0.5s infinite alternate ease-in-out;
-    }
-    
-    /* Right-hand: use same image and mirror it */
-    .right-hand {
-      background-image: url('https://img.icons8.com/ios-filled/100/ffffff/hand.png');
-      transform-origin: left center;
-      /* Mirror image */
-      transform: scaleX(-1);
-      animation: rubRight 0.5s infinite alternate ease-in-out;
-    }
-    
-    /* Left-hand animation: move right toward center */
-    @keyframes rubLeft {
-      0% { transform: translateX(0) rotate(0deg); }
-      50% { transform: translateX(10px) rotate(5deg); }
-      100% { transform: translateX(0) rotate(0deg); }
-    }
-    
-    /* Right-hand animation: move left toward center (include mirror) */
-    @keyframes rubRight {
-      0% { transform: translateX(0) rotate(0deg) scaleX(-1); }
-      50% { transform: translateX(-10px) rotate(-5deg) scaleX(-1); }
-      100% { transform: translateX(0) rotate(0deg) scaleX(-1); }
-    }
-    
-    /* Twitter Link */
+    /* Twitter (X) Link */
     .twitter-link {
       display: inline-block;
       margin-top: 30px;
@@ -170,21 +105,12 @@
     <em>No VCs. No backdoors. Just pure meme power.</em>
   </p>
 
-  <!-- Rubbing Hands Button -->
-  <button id="rubHands">Rub Hands Like Bankman</button>
-
-  <!-- Hands Animation Container -->
-  <div class="hands-container" id="handsContainer">
-    <div class="hand left-hand"></div>
-    <div class="hand right-hand"></div>
-  </div>
-
-  <!-- Twitter Link -->
-  <a class="twitter-link" href="https://twitter.com/yourtwitterhandle" target="_blank">
-    Follow us on Twitter
+  <!-- Twitter (X) Link -->
+  <a class="twitter-link" href="https://x.com/noreffussammyb?s=21" target="_blank">
+    Follow us on X
   </a>
 
-  <!-- Floating Dollar Signs -->
+  <!-- Floating Dollar Signs Script -->
   <script>
     function createDollarSigns() {
       for (let i = 0; i < 50; i++) {
@@ -197,12 +123,6 @@
       }
     }
     createDollarSigns();
-    
-    // Show hands on button click
-    document.getElementById("rubHands").addEventListener("click", function () {
-      const handsContainer = document.getElementById("handsContainer");
-      handsContainer.style.display = "flex";
-    });
   </script>
 </body>
 </html>
