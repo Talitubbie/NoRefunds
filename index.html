@@ -5,30 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$NOREF - No Refunds</title>
     <style>
-        /* Background: Full of floating dollar signs */
+        /* Background: Floating dollar signs */
         body {
             background: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            overflow: hidden;
+            overflow: hidden; /* Prevents unnecessary scrolling */
             position: relative;
-        }
-
-        /* Wobbly effect for No Refunds text */
-        @keyframes wobble {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-2deg); }
-            50% { transform: rotate(2deg); }
-            75% { transform: rotate(-2deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        h1 {
-            font-size: 3rem;
-            animation: wobble 1s infinite;
-            color: #ffcc00;
-            text-shadow: 3px 3px 0 #000;
+            height: 100vh; /* Keeps content within viewport */
         }
 
         /* Floating dollar signs */
@@ -44,6 +29,14 @@
             0% { transform: translateY(100vh); opacity: 0; }
             50% { opacity: 1; }
             100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Meme Image */
+        .meme {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            display: block;
         }
 
         /* Narrative section */
@@ -71,17 +64,24 @@
             transform: scale(1.1);
         }
 
-        /* Hands container */
-        .hands {
-            display: none;
-            font-size: 5rem;
+        /* Hands Container */
+        .hands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 20px;
-            animation: rub 0.5s infinite alternate;
+            visibility: hidden;
+        }
+
+        /* Rubbing Hands Animation */
+        .hand {
+            font-size: 5rem;
+            animation: rub 0.5s infinite alternate ease-in-out;
         }
 
         @keyframes rub {
-            from { transform: translateX(5px); }
-            to { transform: translateX(-5px); }
+            from { transform: translateX(5px) rotate(5deg); }
+            to { transform: translateX(-5px) rotate(-5deg); }
         }
 
         /* Twitter Link */
@@ -98,4 +98,34 @@
         }
     </style>
 </head>
- 
+<body>
+
+    <!-- Meme Image -->
+    <img src="main-meme.jpg" alt="No Refunds Meme" class="meme">
+
+    <!-- Narrative Section -->
+    <div class="narrative">
+        <p>$NOREF is the token for those who believe in financial... let's say, "creativity." Inspired by the biggest rug pull of the decade, we're here to remind you: NO REFUNDS. Ever.</p>
+    </div>
+
+    <!-- Rubbing Hands Button -->
+    <button id="rubHands">RUB HANDS</button>
+
+    <!-- Hands Animation -->
+    <div class="hands-container">
+        <span class="hand">🤲</span>
+        <span class="hand">🤲</span>
+    </div>
+
+    <!-- Twitter Link -->
+    <a href="https://twitter.com/yourhandle" class="twitter-link" target="_blank">Follow us on Twitter</a>
+
+    <script>
+        document.getElementById("rubHands").addEventListener("click", function() {
+            let handsContainer = document.querySelector(".hands-container");
+            handsContainer.style.visibility = "visible";
+        });
+    </script>
+
+</body>
+</html>
