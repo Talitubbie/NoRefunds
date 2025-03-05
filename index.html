@@ -5,24 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$NOREF - No Refunds</title>
     <style>
-        /* Background: Floating dollar signs */
+        /* Full-page styling */
         body {
             background: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            overflow: hidden; /* Prevents unnecessary scrolling */
+            margin: 0;
+            overflow: hidden; /* Fix scrolling issue */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            height: 100vh; /* Keeps content within viewport */
         }
 
-        /* Floating dollar signs */
+        /* Background floating dollar signs */
         .dollar {
             position: absolute;
             font-size: 2rem;
             color: green;
             opacity: 0.7;
-            animation: float 5s infinite ease-in-out;
+            animation: float 6s infinite linear;
         }
 
         @keyframes float {
@@ -35,19 +40,18 @@
         .meme {
             width: 80%;
             max-width: 400px;
-            margin: 20px auto;
-            display: block;
+            margin-bottom: 20px;
         }
 
         /* Narrative section */
         .narrative {
             max-width: 600px;
-            margin: 20px auto;
             font-size: 1.2rem;
             line-height: 1.5;
+            margin-bottom: 20px;
         }
 
-        /* Rubbing Hands Button */
+        /* Button */
         #rubHands {
             background: gold;
             border: none;
@@ -56,7 +60,7 @@
             font-weight: bold;
             cursor: pointer;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
             transition: transform 0.2s;
         }
 
@@ -69,14 +73,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
             visibility: hidden;
+            margin-top: 20px;
         }
 
-        /* Rubbing Hands Animation */
+        /* Rubbing Hands Animation (Same as the meme) */
         .hand {
-            font-size: 5rem;
-            animation: rub 0.5s infinite alternate ease-in-out;
+            font-size: 4rem;
+            display: inline-block;
+            animation: rub 0.4s infinite alternate ease-in-out;
         }
 
         @keyframes rub {
@@ -87,12 +92,12 @@
         /* Twitter Link */
         .twitter-link {
             display: block;
-            margin-top: 30px;
+            margin-top: 20px;
             font-size: 1.5rem;
             text-decoration: none;
             color: cyan;
         }
-        
+
         .twitter-link:hover {
             color: white;
         }
@@ -105,7 +110,7 @@
 
     <!-- Narrative Section -->
     <div class="narrative">
-        <p>$NOREF is the token for those who believe in financial... let's say, "creativity." Inspired by the biggest rug pull of the decade, we're here to remind you: NO REFUNDS. Ever.</p>
+        <p>Welcome to $NOREF – the token inspired by financial genius and creative accounting. No refunds, no take-backs, and absolutely no liability.</p>
     </div>
 
     <!-- Rubbing Hands Button -->
