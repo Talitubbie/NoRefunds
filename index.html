@@ -1,4 +1,3 @@
-index2.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,49 +98,4 @@ index2.html
         }
     </style>
 </head>
-<body>
-
-    <h1>$NOREF - No Refunds</h1>
-
-    <p class="narrative">
-        In the grand tradition of financial "geniuses" who promise the moon and deliver a black hole, we present **$NOREF**—the only token that embraces the hard truth: 
-        <br><br>
-        **No Refunds. No Mercy. No Second Chances.**  
-        <br><br>
-        Inspired by **Sam Bankman-Fraud**, the ultimate crypto rug-pull, $NOREF ensures you remember that in crypto, there are **No Refunds**.  
-        <br><br>
-        **No VCs. No backdoors. Just pure meme power.**  
-    </p>
-
-    <!-- Rubbing Hands Button -->
-    <button id="rubHands">Rub Hands Like Bankman</button>
-
-    <!-- Hands Emoji (Hidden Until Button Click) -->
-    <div class="hands" id="hands">🤲💰🤲</div>
-
-    <!-- Twitter Link -->
-    <a class="twitter-link" href="https://twitter.com/yourtwitterhandle" target="_blank">Follow us on Twitter</a>
-
-    <script>
-        // Generate floating dollar signs
-        function createDollarSigns() {
-            for (let i = 0; i < 50; i++) {
-                let dollar = document.createElement("div");
-                dollar.innerHTML = "$";
-                dollar.className = "dollar";
-                dollar.style.left = Math.random() * 100 + "vw";
-                dollar.style.animationDuration = Math.random() * 3 + 3 + "s";
-                document.body.appendChild(dollar);
-            }
-        }
-        createDollarSigns();
-
-        // Rubbing Hands Animation
-        document.getElementById("rubHands").addEventListener("click", function () {
-            let hands = document.getElementById("hands");
-            hands.style.display = "block";
-        });
-    </script>
-
-</body>
-</html>
+ 
